@@ -19,8 +19,8 @@ public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter writer = resp.getWriter();
-        writer.println("Name:LiZhihui");
-        writer.println("ID:2020211001001308");
+        writer.println("Name:yuyongsong");
+        writer.println("ID:2020211001001306");
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
         simpleDateFormat.format(date);
