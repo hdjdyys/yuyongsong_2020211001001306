@@ -113,17 +113,17 @@
 </head>
 <body>
     <div class="login">
-        <form action="${pageContext.request.contextPath}/hello" align="center" name="form1" method="post" onsubmit="return on_submit()">
+        <form action="${pageContext.request.contextPath}/register" align="center" name="form1" method="post" onsubmit="return on_submit()">
             <h2>New User Registration!</h2><br>
             <div class="login_box">
-            <input type="text"  name="Username"id="1" placeholder="Username" >
+            <input type="text"  name="username"id="1" placeholder="Username" >
             <input type="password" name="password" id="2" placeholder="password" >
-            <input type="text" name="Email" id="3" placeholder=Email ><br>
-            <input type="date" name="Birthdate" placeholder="Date of birth(yyyy-mm-dd)" ><br>
+            <input type="text" name="email" id="3" placeholder=Email ><br>
+            <input type="date" name="birthDate" placeholder="Date of birth(yyyy-mm-dd)" ><br>
             </div>
             <div class="login_box2">
-                <strong>Gender</strong> <input type="radio" name="gender" value="男">Male
-                <input type="radio" name="gender" value="女">Female<br>
+                <strong>Gender</strong> <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female<br>
             </div>
             <br><br><br>
             <input type="submit" class="login_box1" value="Register" >
