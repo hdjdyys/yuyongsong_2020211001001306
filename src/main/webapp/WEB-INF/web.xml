@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app >
+
+    <context>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.cj.jdbc.Driver</param-value>
+    </context>
+    <context>
+        <param-name>url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC</param-value>
+    </context>
+    <context>
+        <param-name>username</param-name>
+        <param-value>root</param-value>
+    </context>
+    <context>
+        <param-name>password</param-name>
+        <param-value>495808</param-value>
+    </context>
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.example.jsp_week3.RegisterServlet</servlet-class>
@@ -10,4 +27,67 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.example.jsp_week4.ConfigDemoServlet</servlet-class>
+    </servlet>
+
+    <!--    <servlet>
+            <servlet-name>Config</servlet-name>
+            <servlet-class>com.example.jsp_week4.ConfigDomeServlet</servlet-class>
+            <init-param>
+                <param-name>name</param-name>
+                <param-value>yuyongsong</param-value>
+            </init-param>
+            <init-param>
+                <param-name>studentId</param-name>
+                <param-value>2020211001001306</param-value>
+            </init-param>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>Config</servlet-name>
+            <url-pattern>/config</url-pattern>
+        </servlet-mapping>-->
+
+
+    <!--<servlet>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.example.jsp_week4.ConfigDemoServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
+    </servlet-mapping>-->
+
+    <!--
+    <servlet>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <servlet-class>com.example.jsp_week4.JDBCDemoServlet</servlet-class>
+        <init-param>
+            <param-name>driver</param-name>
+            <param-value>com.mysql.cj.jdbc.Driver</param-value>
+        </init-param>
+        <init-param>
+            <param-name>url</param-name>
+            <param-value>jdbc:mysql://localhost:3306/userdb?serverTimezone=UTC</param-value>
+        </init-param>
+        <init-param>
+            <param-name>username</param-name>
+            <param-value>root</param-value>
+        </init-param>
+        <init-param>
+            <param-name>password</param-name>
+            <param-value>495808</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+
+    </servlet>-->
+
+
+    <!--<servlet-mapping>
+        <servlet-name>JDBCDemoServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
+    </servlet-mapping>-->
 </web-app>
