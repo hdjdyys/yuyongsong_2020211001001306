@@ -17,6 +17,7 @@
         <param-name>password</param-name>
         <param-value>495808</param-value>
     </context>
+
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.example.jsp_week3.RegisterServlet</servlet-class>
