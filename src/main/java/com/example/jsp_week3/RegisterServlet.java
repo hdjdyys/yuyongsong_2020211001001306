@@ -54,7 +54,7 @@ public class RegisterServlet extends HttpServlet {
         out.print("<body>");
         out.print("<h1 align='center'>UserList</h1>");
         out.print("<hr>");
-        out.print("<table border='1px' align='center' width='50%'>");
+        out.print("<table border='2px' align='center' width='50%'>");
         out.print("<tr>");
         out.print("<th>ID</th>");
         out.print("<th>UserName</th>");
@@ -121,7 +121,7 @@ public class RegisterServlet extends HttpServlet {
             }
         }
 
-        /* 以下是固定的 */
+
         out.print("        </table>");
         out.print("        <hr>");
         out.print("    </body>");
