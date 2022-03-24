@@ -65,7 +65,7 @@ public class RegisterServlet extends HttpServlet {
         out.print("</tr>");
 
         try {
-            String sql1 = "insert into register(id,username, password, email, gender, birthdate) values(?,?,?,?,?,?)";
+            String sql1 = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
             preparedStatement = conn.prepareStatement(sql1);
             preparedStatement.setString(1, "1");
             preparedStatement.setString(2, username);
@@ -80,6 +80,7 @@ public class RegisterServlet extends HttpServlet {
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
                 String id = resultSet.getString("id");
+                System.out.println("id="+id);
                 String username2 = resultSet.getString("username");
                 String password2 = resultSet.getString("password");
                 String email2 = resultSet.getString("email");
