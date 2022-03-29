@@ -66,10 +66,13 @@ public class RegisterServlet extends HttpServlet {
             String sql = "select count(*) sum from register;";
             preparedStatement = conn.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-            String id = resultSet.getString("sum");
+            String id=null;
+            while (resultSet.next()) {
+                 id = resultSet.getString("sum");
+            }
             String sql1 = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
             preparedStatement = conn.prepareStatement(sql1);
-            preparedStatement.setString(1, id+1);
+            preparedStatement.setString(1, String.valueOf(Integer.valueOf(id).intValue()+1));
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, email);
