@@ -38,7 +38,7 @@ public class RegisterServlet extends HttpServlet {
         String password = request.getParameter("password");
         String email = request.getParameter("email");
         String gender = request.getParameter("gender");
-        String birthday = request.getParameter("birthday");
+        String birthdate = request.getParameter("birthDate");
 
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
@@ -77,8 +77,8 @@ public class RegisterServlet extends HttpServlet {
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, email);
             preparedStatement.setString(5, gender);
-            preparedStatement.setString(6, birthday);
-            int num = preparedStatement.executeUpdate();
+            preparedStatement.setString(6, birthdate);
+            preparedStatement.executeUpdate();
 
             String sql2 = "select * from register";
             preparedStatement = conn.prepareStatement(sql2);
