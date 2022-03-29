@@ -1,4 +1,4 @@
-package com.yuyongsong.week2.demo;
+package com.example.week2.demo;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

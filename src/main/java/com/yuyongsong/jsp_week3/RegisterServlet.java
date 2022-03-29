@@ -1,4 +1,4 @@
-package com.example.jsp_week3;
+package com.yuyongsong.jsp_week3;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -27,9 +27,7 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             Class.forName(driver);
-            System.out.println("Connection -->"+driver);
             conn = DriverManager.getConnection(url, username, password);
-            System.out.println("Connection -->"+driver);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -65,9 +63,13 @@ public class RegisterServlet extends HttpServlet {
         out.print("</tr>");
 
         try {
+            String sql = "select count(*) sum from register;";
+            preparedStatement = conn.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            String id = resultSet.getString("sum");
             String sql1 = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
             preparedStatement = conn.prepareStatement(sql1);
-            preparedStatement.setString(1, "1");
+            preparedStatement.setString(1, id+1);
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, email);
@@ -79,8 +81,7 @@ public class RegisterServlet extends HttpServlet {
             preparedStatement = conn.prepareStatement(sql2);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                String id = resultSet.getString("id");
-                System.out.println("id="+id);
+                String id2 = resultSet.getString("id");
                 String username2 = resultSet.getString("username");
                 String password2 = resultSet.getString("password");
                 String email2 = resultSet.getString("email");
@@ -88,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
                 String birthday2 = resultSet.getString("birthdate");
 
                 out.print("<tr>");
-                out.print("<td>"+ id +"</td>");
+                out.print("<td>"+ id2 +"</td>");
                 out.print("<td>"+ username2 +"</td>");
                 out.print("<td>"+ password2 +"</td>");
                 out.print("<td>"+ email2 +"</td>");
@@ -133,7 +134,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
     }
 }

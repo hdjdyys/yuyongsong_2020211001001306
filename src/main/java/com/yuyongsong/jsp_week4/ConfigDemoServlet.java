@@ -1,4 +1,4 @@
-package com.example.jsp_week4;
+package com.yuyongsong.jsp_week4;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;

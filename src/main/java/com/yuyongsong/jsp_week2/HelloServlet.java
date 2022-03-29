@@ -1,4 +1,4 @@
-package com.example.jsp_week2;
+package com.yuyongsong.jsp_week2;
 
 import java.io.*;
 import javax.servlet.http.*;

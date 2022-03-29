@@ -44,13 +44,13 @@
         }
         body {
             /*弹性布局 让页面元素垂直+水平居中*/
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+            /*justify-content: center;*/
+            /*align-items: center;*/
             /*让页面始终占浏览器可视区域总高度*/
             height: 100vh;
             /*背景渐变色*/
-            background: linear-gradient(#141e30,#243b55);
+            background-color: #243b55;
         }
         .login{
             /*弹性布局 让子元素称为弹性项目*/
@@ -62,6 +62,7 @@
             交叉轴的方向是与主轴垂直 交叉轴的方向是向右*/
             align-items: center;
             width: 400px;
+
             padding: 40px;
             background-color: rgba(0, 0, 0, 0.2);
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
@@ -72,10 +73,12 @@
             color: #fff;
             margin-bottom: 30px;
         }
-        .login .login_box {
+        .login {
             /*相对定位*/
             position: relative;
-            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
         .login .login_box input{
             /*清除input框自带的边框和轮廓*/
@@ -112,6 +115,7 @@
     </style>
 </head>
 <body>
+<%@include file="header.jsp"%><br/>
     <div class="login">
         <form action="${pageContext.request.contextPath}/register" align="center" name="form1" method="post" onsubmit="return on_submit()">
             <h2>New User Registration!</h2><br>
@@ -128,6 +132,7 @@
             <br><br><br>
             <input type="submit" class="login_box1" value="Register" >
         </form>
-    </div>
+    </div><br/>
+<%@include file="footer.jsp"%>
 </body>
 </html>

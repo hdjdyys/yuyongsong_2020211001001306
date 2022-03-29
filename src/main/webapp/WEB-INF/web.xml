@@ -23,25 +23,22 @@
     </context-param>
 
 
+
     <!--<servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
     </servlet-mapping>-->
 
-<!--
-    <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/register</url-pattern>
-    </servlet-mapping>-->
+
 
     <!--<servlet>
         <servlet-name>ConfigDemoServlet</servlet-name>
-        <servlet-class>com.example.jsp_week4.ConfigDemoServlet</servlet-class>
+        <servlet-class>com.yuyongsong.jsp_week4.ConfigDemoServlet</servlet-class>
     </servlet>-->
 
     <!--    <servlet>
             <servlet-name>Config</servlet-name>
-            <servlet-class>com.example.jsp_week4.ConfigDomeServlet</servlet-class>
+            <servlet-class>com.yuyongsong.jsp_week4.ConfigDomeServlet</servlet-class>
             <init-param>
                 <param-name>name</param-name>
                 <param-value>yuyongsong</param-value>
@@ -59,7 +56,7 @@
 
     <!--<servlet>
         <servlet-name>ConfigDemoServlet</servlet-name>
-        <servlet-class>com.example.jsp_week4.ConfigDemoServlet</servlet-class>
+        <servlet-class>com.yuyongsong.jsp_week4.ConfigDemoServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -70,7 +67,7 @@
     <!--
     <servlet>
         <servlet-name>JDBCDemoServlet</servlet-name>
-        <servlet-class>com.example.jsp_week4.JDBCDemoServlet</servlet-class>
+        <servlet-class>com.yuyongsong.jsp_week4.JDBCDemoServlet</servlet-class>
         <init-param>
             <param-name>driver</param-name>
             <param-value>com.mysql.cj.jdbc.Driver</param-value>
@@ -96,4 +93,7 @@
         <servlet-name>JDBCDemoServlet</servlet-name>
         <url-pattern>/jdbc</url-pattern>
     </servlet-mapping>-->
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
