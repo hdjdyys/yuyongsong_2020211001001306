@@ -18,6 +18,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
+        /*
         ServletContext context = getServletConfig().getServletContext();
         String driver = context.getInitParameter("driver");
         String url = context.getInitParameter("url");
@@ -30,6 +31,9 @@ public class LoginServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+         */
+        conn = (Connection) getServletContext().getAttribute("con");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -38,23 +42,42 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         String username1 = null;
         String password1 = null;
+        String id1 = null;
+        String email1 = null;
+        String gender1 = null;
+        String birthdate1 = null;
 
-        String sql = "select username,password from register where username = ?;";
+        String sql = "select * from register where username = ?;";
         try {
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,username);
             resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
+                id1 = resultSet.getString("id");
                 username1 = resultSet.getString("username");
                 password1 = resultSet.getString("password");
+                email1 = resultSet.getString("email");
+                gender1 = resultSet.getString("gender");
+                birthdate1 = resultSet.getString("birthdate");
             }
             response.setContentType("text/html");
             PrintWriter out = response.getWriter();
             if (username.equals(username1)&&password.equals(password1)){
-                out.print("LOGIN SUCCESS!!");
-                out.print("<br/>");
-                out.print("WECOME,"+username);
-                out.close();
+//                out.print("Login Successful!!");
+//                out.print("<br/>");
+//                out.print("Welcome,"+username);
+
+                request.setAttribute("id",id1);
+                request.setAttribute("username",username1);
+                request.setAttribute("password",password1);
+                request.setAttribute("email",email1);
+                request.setAttribute("gender",gender1);
+                request.setAttribute("birthdate",birthdate1);
+                request.getRequestDispatcher("userInfo.jsp").forward(request,response);
+            }else{
+                //out.print("Username or password Error");
+                request.setAttribute("message","Username or Password Error");
+                request.getRequestDispatcher("login.jsp").forward(request,response);
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -88,5 +111,6 @@ public class LoginServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        doPost(request, response);
     }
 }

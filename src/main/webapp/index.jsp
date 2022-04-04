@@ -7,16 +7,25 @@
 </head>
 <body>
 <%@include file="header.jsp"%>
-<h1>
+<h2>
     <%="Name: yu yongsong"%>
-</h1>
-<h1>
+</h2>
+<h2>
     <%="ID:2020211001001306"%>
-</h1>
-<h1>
+</h2>
+<h2>
 
     <%="Date and Time Sun March 7 20:50:21 CST 2022"%>
-</h1>
+</h2>
+<form method="get" target="_blank" action="search">
+    <input type="text" name="txt" size=30/>
+    <select name="search">
+        <option value="baidu">baidu</option>
+        <option value="bing">Bing</option>
+        <option value="google">Google</option>
+    </select>
+    <input type="submit" value="Search">
+</form>
 <%@include file="footer.jsp"%>
 </body>
 

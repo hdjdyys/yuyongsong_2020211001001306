@@ -12,12 +12,14 @@ import java.sql.*;
 
 @WebServlet(name = "RegisterServlet", value = "/register")
 public class RegisterServlet extends HttpServlet {
-    Connection conn = null;
+    Connection con = null;
     PreparedStatement preparedStatement = null;
     ResultSet resultSet = null;
 
     @Override
     public void init() throws ServletException {
+        super.init();
+/*
         ServletContext context = getServletConfig().getServletContext();
         String driver = context.getInitParameter("driver");
         String url = context.getInitParameter("url");
@@ -31,6 +33,9 @@ public class RegisterServlet extends HttpServlet {
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
+
+ */
+       con = (Connection) getServletContext().getAttribute("con");
     }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -43,35 +48,18 @@ public class RegisterServlet extends HttpServlet {
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
 
-        out.print("<!DOCTYPE html>");
-        out.print("<html>");
-        out.print("<head>");
-        out.print("<meta charset='UTF-8'>");
-        out.print("<title>UserList</title>");
-        out.print("</head>");
-        out.print("<body>");
-        out.print("<h1 align='center'>UserList</h1>");
-        out.print("<hr>");
-        out.print("<table border='2px' align='center' width='50%'>");
-        out.print("<tr>");
-        out.print("<th>ID</th>");
-        out.print("<th>UserName</th>");
-        out.print("<th>Password</th>");
-        out.print("<th>Email</th>");
-        out.print("<th>Gender</th>");
-        out.print("<th>Birthdate</th>");
-        out.print("</tr>");
+
 
         try {
             String sql = "select count(*) sum from register;";
-            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement = con.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
             String id=null;
             while (resultSet.next()) {
                  id = resultSet.getString("sum");
             }
             String sql1 = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
-            preparedStatement = conn.prepareStatement(sql1);
+            preparedStatement = con.prepareStatement(sql1);
             preparedStatement.setString(1, String.valueOf(Integer.valueOf(id).intValue()+1));
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
@@ -79,10 +67,28 @@ public class RegisterServlet extends HttpServlet {
             preparedStatement.setString(5, gender);
             preparedStatement.setString(6, birthdate);
             preparedStatement.executeUpdate();
-
+/*
             String sql2 = "select * from register";
-            preparedStatement = conn.prepareStatement(sql2);
+            preparedStatement = con.prepareStatement(sql2);
             resultSet = preparedStatement.executeQuery();
+            out.print("<!DOCTYPE html>");
+            out.print("<html>");
+            out.print("<head>");
+            out.print("<meta charset='UTF-8'>");
+            out.print("<title>UserList</title>");
+            out.print("</head>");
+            out.print("<body>");
+            out.print("<h1 align='center'>UserList</h1>");
+            out.print("<hr>");
+            out.print("<table border='2px' align='center' width='50%'>");
+            out.print("<tr>");
+            out.print("<th>ID</th>");
+            out.print("<th>UserName</th>");
+            out.print("<th>Password</th>");
+            out.print("<th>Email</th>");
+            out.print("<th>Gender</th>");
+            out.print("<th>Birthdate</th>");
+            out.print("</tr>");
             while (resultSet.next()){
                 String id2 = resultSet.getString("id");
                 String username2 = resultSet.getString("username");
@@ -100,6 +106,9 @@ public class RegisterServlet extends HttpServlet {
                 out.print("<td>"+ birthday2 +"</td>");
                 out.print("</tr>");
             }
+
+ */
+            response.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
@@ -117,9 +126,9 @@ public class RegisterServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-            if (conn!=null){
+            if (con!=null){
                 try {
-                    conn.close();
+                    con.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -137,6 +146,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request, response);
     }
 }
