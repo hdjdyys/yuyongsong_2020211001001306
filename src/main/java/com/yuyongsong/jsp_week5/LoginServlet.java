@@ -1,5 +1,8 @@
 package com.yuyongsong.jsp_week5;
 
+import com.yuyongsong.dao.UserDao;
+import com.yuyongsong.model.User;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,14 +43,28 @@ public class LoginServlet extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String username1 = null;
-        String password1 = null;
-        String id1 = null;
-        String email1 = null;
-        String gender1 = null;
-        String birthdate1 = null;
+//        String username1 = null;
+////        String password1 = null;
+////        String id1 = null;
+////        String email1 = null;
+////        String gender1 = null;
+////        String birthdate1 = null;
+        UserDao userDao = new UserDao();
+        try {
+            User user = userDao.findByUsernamePassword(conn,username,password);
+            if (user != null){
+                request.setAttribute("user",user);
+                request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+            }else {
+                request.setAttribute("message","Username or Password Error");
+                request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
-        String sql = "select * from register where username = ?;";
+
+       /* String sql = "select * from register where username = ?;";
         try {
             preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1,username);
@@ -61,7 +78,7 @@ public class LoginServlet extends HttpServlet {
                 birthdate1 = resultSet.getString("birthdate");
             }
             response.setContentType("text/html");
-            PrintWriter out = response.getWriter();
+            //PrintWriter out = response.getWriter();
             if (username.equals(username1)&&password.equals(password1)){
 //                out.print("Login Successful!!");
 //                out.print("<br/>");
@@ -104,13 +121,14 @@ public class LoginServlet extends HttpServlet {
                     e.printStackTrace();
                 }
             }
-        }
+        }*/
 
 
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        doPost(request, response);
+        //doPost(request, response);
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
     }
 }
