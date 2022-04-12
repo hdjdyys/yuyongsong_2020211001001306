@@ -20,7 +20,7 @@ public class UserDao implements IUserDao{
         preparedStatement.setString(3, user.getPassword());
         preparedStatement.setString(4, user.getEmail());
         preparedStatement.setString(5, user.getGender());
-        preparedStatement.setDate(6, user.getBirthdate());
+        preparedStatement.setDate(6, (java.sql.Date) user.getBirthdate());
         preparedStatement.executeUpdate();
         return true;
     }
