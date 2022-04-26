@@ -29,6 +29,6 @@
     </tr>
 
 </table>
-<a href="updateUser.jsp">Update</a> <br>
+<a href="updateUser">Update</a> <br>
 
 <%@include file="footer.jsp"%>

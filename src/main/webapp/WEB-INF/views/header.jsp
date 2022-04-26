@@ -42,6 +42,6 @@
    <br> <a href="logout">Logout</a>
       <%}%>
   <br><a href="#">My Cart</a><br/>
-<a href="../../register.jsp">Register Here</a>
+      <a href="register">Register Here</a>
   </td></tr>
  </table>
