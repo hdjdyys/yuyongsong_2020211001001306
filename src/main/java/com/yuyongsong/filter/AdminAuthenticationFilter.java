@@ -9,33 +9,40 @@ import java.io.IOException;
 
 @WebFilter("/admin/*")
 public class AdminAuthenticationFilter implements Filter {
-    public void destroy() {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+
     }
 
-    public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
-
-        HttpServletRequest httpRequest = (HttpServletRequest) req;
-        HttpServletResponse httpResponse = (HttpServletResponse) resp;
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain Chain) throws IOException, ServletException {
+        //change ServletRequest to HttpServletRequest
+        HttpServletRequest httpRequest = (HttpServletRequest)request;
+        HttpServletResponse httpResponse = (HttpServletResponse)response;
+        //get session
         HttpSession session = httpRequest.getSession(false);
-
-        boolean isLoggedIn = (session != null && session.getAttribute("userList") != null);
-
-        String loginURI = httpRequest.getContextPath() + "/admin/login";
-
+        boolean isLoggedIn = (session!=null && session.getAttribute("user")!=null);
+        String loginURI = httpRequest.getContextPath()+"/admin/login";
         boolean isLoginRequest = httpRequest.getRequestURI().equals(loginURI);
         boolean isLoginPage = httpRequest.getRequestURI().endsWith("login");
-        if(isLoggedIn && (isLoginRequest || isLoginPage)){
-            RequestDispatcher dispatcher = httpRequest.getRequestDispatcher("/admin/home");
-            dispatcher.forward(req,resp);
+        if (isLoggedIn && (isLoginRequest || isLoginPage)){
+            //the admin is already login and he is trying login again
+            //then forward to the admin homepage
+            request.getRequestDispatcher("/admin/home").forward(httpRequest,httpResponse);//go to home
+
         }else if (isLoggedIn || isLoginRequest){
-            chain.doFilter(req,resp);
-        }else{
-            httpResponse.sendRedirect(httpRequest.getContextPath()+"/admin/login");
+
+            Chain.doFilter(request,response);//go to next destination
+        }else {
+            System.out.println(httpRequest.getContextPath());
+            //httpResponse.sendRedirect(httpRequest.getContextPath()+"/admin/home");//go to login
+            request.getRequestDispatcher("/admin/home").forward(httpRequest, httpResponse);
         }
     }
 
-    public void init(FilterConfig config) throws ServletException {
+    @Override
+    public void destroy() {
 
     }
-
 }
