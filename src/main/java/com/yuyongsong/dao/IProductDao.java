@@ -55,5 +55,5 @@ public interface IProductDao {
 	 * Select all product by name like
 	 * @return List of product
 	 */
-	public List<Product> getPicture(Integer productId, Connection con) throws SQLException;
+	public InputStream getPicture(Integer productId, Connection con) throws SQLException;
 }
