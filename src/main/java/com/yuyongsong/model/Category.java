@@ -93,8 +93,9 @@ public class Category implements Serializable {
     public static String findByCategoryId(Connection con, int categoryId){
         String categoryName = null;
         try {
-            String queryString = "select categoryName from Category where categoryId";
+            String queryString = "select categoryName from Category where categoryId=?";
             PreparedStatement ps = con.prepareStatement(queryString);
+            ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 categoryName = rs.getString("categoryName");
