@@ -22,6 +22,10 @@
         <param-value>495808</param-value>
     </context-param>
 
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/life</url-pattern>
+    </servlet-mapping>
 
 
     <!--<servlet-mapping>
