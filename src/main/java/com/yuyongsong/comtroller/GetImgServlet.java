@@ -26,13 +26,13 @@ public class GetImgServlet extends HttpServlet {
         response.setContentType("text/html");
         ProductDao dao = new ProductDao();
         int id = 0;
-        if (request.getParameter("id")!=null){
+        if (request.getParameter("id") != null) {
             id = Integer.parseInt(request.getParameter("id"));
         }
         try {
             byte[] imgByte = new byte[0];
             imgByte = dao.getPictureById(id, con);
-            if (imgByte!=null){
+            if (imgByte != null) {
                 response.setContentType("image/gif");
                 OutputStream os = response.getOutputStream();
                 os.write(imgByte);

@@ -11,7 +11,8 @@ import java.io.PrintWriter;
 @WebServlet(name = "LifeCycleServlet")
 public class LifeCycleServlet extends HttpServlet {
 
-    private int a=0;
+    private int a = 0;
+
     @Override
     public void init() throws ServletException {
         System.out.println("I Am from default constructor");
@@ -32,7 +33,7 @@ public class LifeCycleServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("<html><body>");
-        out.println("<h1>"+"Since loading,this servlet has been accessed "+a+"times"+"</h1>");
+        out.println("<h1>" + "Since loading,this servlet has been accessed " + a + "times" + "</h1>");
         out.println("</body></html>");
     }
 

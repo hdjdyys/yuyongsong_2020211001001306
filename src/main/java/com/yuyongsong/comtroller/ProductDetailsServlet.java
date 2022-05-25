@@ -25,9 +25,9 @@ public class ProductDetailsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = request.getParameter("id")!=null?Integer.parseInt(request.getParameter("id")):0;
+        int id = request.getParameter("id") != null ? Integer.parseInt(request.getParameter("id")) : 0;
         ProductDao productDao = new ProductDao();
-        if (id == 0){
+        if (id == 0) {
             return; //error
         }
         List<Category> categoryList = Category.findAllCategory(con);

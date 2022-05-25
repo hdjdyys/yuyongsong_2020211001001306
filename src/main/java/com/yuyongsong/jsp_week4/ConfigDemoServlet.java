@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(name="Config", value="/config",
+@WebServlet(name = "Config", value = "/config",
         initParams = {
-                @WebInitParam(name="name", value="yuyongsong"),
-                @WebInitParam(name="studentId", value="2020211001001306")
-        } )
+                @WebInitParam(name = "name", value = "yuyongsong"),
+                @WebInitParam(name = "studentId", value = "2020211001001306")
+        })
 public class ConfigDemoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

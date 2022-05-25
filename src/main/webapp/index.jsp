@@ -6,7 +6,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <h2>
     <%="Name: yu yongsong"%>
 </h2>
@@ -26,7 +26,7 @@
     </select>
     <input type="submit" value="Search">
 </form>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 
 </html>

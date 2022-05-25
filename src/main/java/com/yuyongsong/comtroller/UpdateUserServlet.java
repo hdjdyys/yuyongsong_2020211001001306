@@ -48,11 +48,11 @@ public class UpdateUserServlet extends HttpServlet {
             e.printStackTrace();
         }
 
-        if (num != 0){
+        if (num != 0) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
             request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request, response);
-        }else {
+        } else {
             request.setAttribute("message", "Update fail!");
             request.getRequestDispatcher("WEB-INF/views/updateUser.jsp").forward(request, response);
         }

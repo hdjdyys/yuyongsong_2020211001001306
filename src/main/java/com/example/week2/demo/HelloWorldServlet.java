@@ -13,7 +13,7 @@ import java.util.Date;
 public class HelloWorldServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req,resp);
+        doPost(req, resp);
     }
 
     @Override
@@ -24,6 +24,6 @@ public class HelloWorldServlet extends HttpServlet {
         Date date = new Date(System.currentTimeMillis());
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-mm-dd");
         simpleDateFormat.format(date);
-        writer.println("Date and Time"+date);
+        writer.println("Date and Time" + date);
     }
 }

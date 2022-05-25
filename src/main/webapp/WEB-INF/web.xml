@@ -34,7 +34,6 @@
     </servlet-mapping>-->
 
 
-
     <!--<servlet>
         <servlet-name>ConfigDemoServlet</servlet-name>
         <servlet-class>com.yuyongsong.jsp_week4.ConfigDemoServlet</servlet-class>
@@ -101,4 +100,12 @@
         <welcome-file>home</welcome-file>
         <welcome-file>views/index.jsp</welcome-file>
     </welcome-file-list>
+    <filter>
+        <filter-name>yuyongsong</filter-name>
+        <filter-class>com.lab2.yuyongsongFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>yuyongsong</filter-name>
+        <url-pattern>/lab2/*</url-pattern>
+    </filter-mapping>
 </web-app>

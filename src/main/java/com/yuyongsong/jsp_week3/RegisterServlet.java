@@ -35,8 +35,9 @@ public class RegisterServlet extends HttpServlet {
         }
 
  */
-       con = (Connection) getServletContext().getAttribute("con");
+        con = (Connection) getServletContext().getAttribute("con");
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String username = request.getParameter("username");
@@ -49,18 +50,17 @@ public class RegisterServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
 
-
         try {
             String sql = "select count(*) sum from register;";
             preparedStatement = con.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
-            String id=null;
+            String id = null;
             while (resultSet.next()) {
-                 id = resultSet.getString("sum");
+                id = resultSet.getString("sum");
             }
             String sql1 = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
             preparedStatement = con.prepareStatement(sql1);
-            preparedStatement.setString(1, String.valueOf(Integer.valueOf(id).intValue()+1));
+            preparedStatement.setString(1, String.valueOf(Integer.valueOf(id).intValue() + 1));
             preparedStatement.setString(2, username);
             preparedStatement.setString(3, password);
             preparedStatement.setString(4, email);
@@ -111,22 +111,22 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect("login.jsp");
         } catch (SQLException e) {
             e.printStackTrace();
-        }finally {
-            if (resultSet !=null){
+        } finally {
+            if (resultSet != null) {
                 try {
                     resultSet.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (preparedStatement !=null){
+            if (preparedStatement != null) {
                 try {
                     preparedStatement.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
-            if (con!=null){
+            if (con != null) {
                 try {
                     con.close();
                 } catch (SQLException e) {

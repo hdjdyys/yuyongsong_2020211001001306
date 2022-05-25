@@ -13,10 +13,10 @@
 <body>
 <h1>i am MyJsp.jsp</h1>
 <from Action="<%=request.getContextPath()%>/lab1/MyDearJSp.jsp" Method="post">
-    name<input type="text" name="name" /><br/>
-    class<input type="text" name="class" /><br/>
-    ID<input type="text" name="id" /><br/>
-    <input type="submit" value="Send date to server" />
+    name<input type="text" name="name"/><br/>
+    class<input type="text" name="class"/><br/>
+    ID<input type="text" name="id"/><br/>
+    <input type="submit" value="Send date to server"/>
 </from>
 </body>
 </html>

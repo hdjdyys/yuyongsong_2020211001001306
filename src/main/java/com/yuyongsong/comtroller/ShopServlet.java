@@ -31,10 +31,10 @@ public class ShopServlet extends HttpServlet {
 
         ProductDao productDao = new ProductDao();
         List<Product> productList = null;
-        try{
-            if (request.getParameter("categoryId")==null){
+        try {
+            if (request.getParameter("categoryId") == null) {
                 productList = productDao.findAll(con);
-            }else {
+            } else {
                 int categoryId = Integer.parseInt(request.getParameter("categoryId"));
                 productList = productDao.findByCategoryId(categoryId, con);
             }

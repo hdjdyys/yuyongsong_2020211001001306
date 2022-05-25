@@ -36,13 +36,13 @@ public class AddProductServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String productName = request.getParameter("productName");
-        double price = request.getParameter("price")!=null?Double.parseDouble(request.getParameter("price")):0.0;
-        int categoryId = request.getParameter("categoryId")!=null?Integer.parseInt(request.getParameter("categoryId")):0;
+        double price = request.getParameter("price") != null ? Double.parseDouble(request.getParameter("price")) : 0.0;
+        int categoryId = request.getParameter("categoryId") != null ? Integer.parseInt(request.getParameter("categoryId")) : 0;
         String productDescription = request.getParameter("productDescription");
 
         InputStream inputStream = null;
         Part filePart = request.getPart("picture");
-        if (filePart != null){
+        if (filePart != null) {
             System.out.println("file name :" + filePart.getName() + "size" + filePart.getSize() + "file type" + filePart.getContentType());
             inputStream = filePart.getInputStream();
         }
@@ -57,7 +57,7 @@ public class AddProductServlet extends HttpServlet {
         ProductDao productDao = new ProductDao();
         try {
             int n = productDao.save(product, con);
-            if (n>0){
+            if (n > 0) {
                 response.sendRedirect("productList");
             }
         } catch (SQLException e) {

@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UserDao implements IUserDao{
+public class UserDao implements IUserDao {
     @Override
     public boolean saveUser(Connection con, User user) throws SQLException {
         String sql = "insert into register(id, username, password, email, gender, birthdate) values (?,?,?,?,?,?);";
         PreparedStatement preparedStatement = con.prepareStatement(sql);
-        preparedStatement.setString(1,user.getId());
+        preparedStatement.setString(1, user.getId());
         preparedStatement.setString(2, user.getUsername());
         preparedStatement.setString(3, user.getPassword());
         preparedStatement.setString(4, user.getEmail());
@@ -29,18 +29,18 @@ public class UserDao implements IUserDao{
     public int deleteUser(Connection con, User user) throws SQLException {
         String sql = "delete from register where id = ?";
         PreparedStatement ps = con.prepareStatement(sql);
-        ps.setString(1,user.getId());
+        ps.setString(1, user.getId());
         ps.executeUpdate();
         return 0;
     }
 
     @Override
     public int updateUser(Connection con, User user) throws SQLException {
-        String sql = "update register set username ="+user.getUsername()+
-                ", password = "+user.getPassword()+
-                ", email = "+user.getEmail()+
-                ", gender = "+user.getGender()+
-                ", birthdate = "+user.getBirthdate()+" where id="+user.getId();
+        String sql = "update register set username =" + user.getUsername() +
+                ", password = " + user.getPassword() +
+                ", email = " + user.getEmail() +
+                ", gender = " + user.getGender() +
+                ", birthdate = " + user.getBirthdate() + " where id=" + user.getId();
         PreparedStatement ps = con.prepareStatement(sql);
         ps.executeUpdate();
         return 0;
@@ -50,11 +50,11 @@ public class UserDao implements IUserDao{
     public User findById(Connection con, Integer id) throws SQLException {
         String sql = "select id ,username,password,email,gender,birthdate from register where id = ?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setInt(1,id);
+        st.setInt(1, id);
 
         ResultSet rs = st.executeQuery();
         User user = null;
-        if (rs.next()){
+        if (rs.next()) {
             user = new User();
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
@@ -71,11 +71,11 @@ public class UserDao implements IUserDao{
 
         String sql = "select id ,username,password,email,gender,birthdate from register where username=? and password=?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,username);
-        st.setString(2,password);
+        st.setString(1, username);
+        st.setString(2, password);
         ResultSet rs = st.executeQuery();
         User user = null;
-        if (rs.next()){
+        if (rs.next()) {
             user = new User();
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
@@ -92,11 +92,11 @@ public class UserDao implements IUserDao{
 
         String sql = "select id ,username,password,email,gender,birthdate from register where username = ?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,username);
+        st.setString(1, username);
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -112,11 +112,11 @@ public class UserDao implements IUserDao{
     public List<User> findByPassword(Connection con, String password) throws SQLException {
         String sql = "select id ,username,password,email,gender,birthdate from register where password = ?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,password);
+        st.setString(1, password);
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -132,11 +132,11 @@ public class UserDao implements IUserDao{
     public List<User> findByEmail(Connection con, String email) throws SQLException {
         String sql = "select id ,username,password,email,gender,birthdate from register where email = ?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,email);
+        st.setString(1, email);
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -152,11 +152,11 @@ public class UserDao implements IUserDao{
     public List<User> findByGender(Connection con, String gender) throws SQLException {
         String sql = "select id ,username,password,email,gender,birthdate from register where gender = ?";
         PreparedStatement st = con.prepareStatement(sql);
-        st.setString(1,gender);
+        st.setString(1, gender);
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -176,7 +176,7 @@ public class UserDao implements IUserDao{
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
@@ -195,7 +195,7 @@ public class UserDao implements IUserDao{
         ResultSet rs = st.executeQuery();
         User user = new User();
         List<User> list = new ArrayList<User>();
-        while (rs.next()){
+        while (rs.next()) {
             user.setId(rs.getString("id"));
             user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));

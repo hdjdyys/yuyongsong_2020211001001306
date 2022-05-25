@@ -52,36 +52,36 @@ jQuery(function ($) {
                 {
                     "color": ""
                 }
-		]
-	}, {
+            ]
+        }, {
             "featureType": "water",
             "stylers": [
                 {
                     "color": "#A2DAF2"
                 }
-		]
-	}, {
+            ]
+        }, {
             "featureType": "landscape",
             "stylers": [
                 {
                     "color": "#ABCE83"
                 }
-		]
-	}, {
+            ]
+        }, {
             "elementType": "labels.text.fill",
             "stylers": [
                 {
                     "color": "#000000"
                 }
-		]
-	}, {
+            ]
+        }, {
             "featureType": "poi",
             "stylers": [
                 {
                     "color": "#2ECC71"
                 }
-		]
-	}, {
+            ]
+        }, {
             "elementType": "labels.text",
             "stylers": [
                 {
@@ -93,10 +93,10 @@ jQuery(function ($) {
                 {
                     "color": "#111111"
                 }
-		]
-	}
+            ]
+        }
 
-	];
+    ];
 
     map.addStyle({
         styledMapName: "Styled Map",

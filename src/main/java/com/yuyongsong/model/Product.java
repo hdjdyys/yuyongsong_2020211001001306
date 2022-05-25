@@ -11,7 +11,7 @@ public class Product {
     private Double price;
 
 
-    public Product(){
+    public Product() {
 
     }
 

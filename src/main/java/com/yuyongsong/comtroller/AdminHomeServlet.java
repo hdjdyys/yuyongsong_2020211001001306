@@ -16,17 +16,17 @@ public class AdminHomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession(false);
-        if (session!=null && session.getAttribute("user")!=null){
+        if (session != null && session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
-            if ("admin".equals(user.getUsername())){
+            if ("admin".equals(user.getUsername())) {
                 request.getRequestDispatcher("../WEB-INF/views/admin/index.jsp").forward(request, response);
-            }else {
+            } else {
                 //have session but it's not admin user
                 session.invalidate();// kill session
                 request.setAttribute("message", "Unauthorized Access admin module!!!");
                 request.getRequestDispatcher("../WEB-INF/views/login.jsp").forward(request, response);
             }
-        }else {
+        } else {
             // don't have session or user is null
             request.setAttribute("message", "Please login as admin!!!");
             request.getRequestDispatcher("../WEB-INF/views/login.jsp").forward(request, response);

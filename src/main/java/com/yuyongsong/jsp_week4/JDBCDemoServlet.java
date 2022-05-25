@@ -21,9 +21,10 @@ import java.sql.SQLException;
     },
         loadOnStartup = 1
 )*/
-@WebServlet(urlPatterns = {"/jdbc"},loadOnStartup = 1)
+@WebServlet(urlPatterns = {"/jdbc"}, loadOnStartup = 1)
 public class JDBCDemoServlet extends HttpServlet {
     Connection conn = null;
+
     @Override
     public void init() throws ServletException {
 //        String driver = "com.mysql.cj.jdbc.Driver";
@@ -35,7 +36,7 @@ public class JDBCDemoServlet extends HttpServlet {
 //        String url = config.getInitParameter("url");
 //        String username = config.getInitParameter("username");
 //        String password = config.getInitParameter("password");
-        ServletContext context =getServletContext();
+        ServletContext context = getServletContext();
         String driver = context.getInitParameter("driver");
         System.out.println(driver);
         String url = context.getInitParameter("url");
@@ -44,8 +45,8 @@ public class JDBCDemoServlet extends HttpServlet {
 
         try {
             Class.forName(driver);
-            Connection conn = DriverManager.getConnection(url,username,password);
-            System.out.println("Connection -->"+conn);
+            Connection conn = DriverManager.getConnection(url, username, password);
+            System.out.println("Connection -->" + conn);
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }

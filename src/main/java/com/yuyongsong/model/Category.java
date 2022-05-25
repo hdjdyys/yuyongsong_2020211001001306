@@ -70,13 +70,13 @@ public class Category implements Serializable {
                 '}';
     }
 
-    public static List<Category> findAllCategory(Connection con){
+    public static List<Category> findAllCategory(Connection con) {
         List<Category> list = new ArrayList<>();
         try {
             String queryString = "select * from Category";
             PreparedStatement pt = con.prepareStatement(queryString);
             ResultSet rs = pt.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 Category c = new Category();
                 c.setCategoryId(rs.getInt("categoryId"));
                 c.setCategoryName(rs.getString("categoryName"));
@@ -90,14 +90,14 @@ public class Category implements Serializable {
         return list;
     }
 
-    public static String findByCategoryId(Connection con, int categoryId){
+    public static String findByCategoryId(Connection con, int categoryId) {
         String categoryName = null;
         try {
             String queryString = "select categoryName from Category where categoryId=?";
             PreparedStatement ps = con.prepareStatement(queryString);
             ps.setInt(1, categoryId);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 categoryName = rs.getString("categoryName");
             }
         } catch (SQLException e) {

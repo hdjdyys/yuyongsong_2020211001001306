@@ -8,25 +8,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <script language="JavaScript">
-    function on_submit()
-    {
-        let username=document.getElementById("1").value;
-        if (username==null||username===''){
+    function on_submit() {
+        let username = document.getElementById("1").value;
+        if (username == null || username === '') {
             alert("username can not be null!")
             return false;
         }
-        let password=document.getElementById("2").value;
-        if (password==null||password===''){
+        let password = document.getElementById("2").value;
+        if (password == null || password === '') {
             alert("password can not be null!")
             return false;
         }
-        if (password.length<8){
+        if (password.length < 8) {
             alert("lengh must be at least 8 characters!");
             return false;
         }
-        let Email=document.getElementById("3").value;
-        const reg=/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-        if (!reg.test(Email)){
+        let Email = document.getElementById("3").value;
+        const reg = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+        if (!reg.test(Email)) {
             alert("invalid Email")
             return false;
         }
@@ -35,13 +34,14 @@
 <head>
     <title>New User Registration</title>
     <style type="text/css">
-        *{
+        * {
             /*初始化 清除页面元素的内外边距*/
             padding: 0;
             margin: 0;
             /*盒子模型*/
             box-sizing: border-box;
         }
+
         body {
             /*弹性布局 让页面元素垂直+水平居中*/
 
@@ -52,7 +52,8 @@
             /*背景渐变色*/
             background-color: #243b55;
         }
-        .login{
+
+        .login {
             /*弹性布局 让子元素称为弹性项目*/
             display: flex;
             /*让弹性项目垂直排列  原理是改变弹性盒子的主轴方向
@@ -69,18 +70,20 @@
 
         }
 
-        .login h2{
+        .login h2 {
             color: #fff;
             margin-bottom: 30px;
         }
+
         .login {
             /*相对定位*/
             position: relative;
             top: 50%;
             left: 50%;
-            transform: translate(-50%,-50%);
+            transform: translate(-50%, -50%);
         }
-        .login .login_box input{
+
+        .login .login_box input {
             /*清除input框自带的边框和轮廓*/
             outline: none;
             border: none;
@@ -95,13 +98,13 @@
         }
 
         .login .login_box input:focus,
-        .login  .login_box input:valid{
+        .login .login_box input:valid {
             top: -20px;
             color: #03e9f4;
             font-size: 12px;
         }
 
-        .login .login_box1{
+        .login .login_box1 {
             outline: none;
             border: none;
             position: relative;
@@ -109,30 +112,34 @@
             background-color: transparent;
             color: #fff;
         }
-        .login_box2{
+
+        .login_box2 {
             color: white;
         }
     </style>
 </head>
 <body>
-<%@include file="header.jsp"%><br/>
-    <div class="login">
-        <form action="${pageContext.request.contextPath}/register" align="center" name="form1" method="post" onsubmit="return on_submit()">
-            <h2>New User Registration!</h2><br>
-            <div class="login_box">
-            <input type="text"  name="username"id="1" placeholder="Username" >
-            <input type="password" name="password" id="2" placeholder="password" >
-            <input type="text" name="email" id="3" placeholder=Email ><br>
-            <input type="date" name="birthDate" placeholder="Date of birth(yyyy-mm-dd)" ><br>
-            </div>
-            <div class="login_box2">
-                <strong>Gender</strong> <input type="radio" name="gender" value="male">Male
-                <input type="radio" name="gender" value="female">Female<br>
-            </div>
-            <br><br><br>
-            <input type="submit" class="login_box1" value="Register" >
-        </form>
-    </div><br/>
-<%@include file="footer.jsp"%>
+<%@include file="header.jsp" %>
+<br/>
+<div class="login">
+    <form action="${pageContext.request.contextPath}/register" align="center" name="form1" method="post"
+          onsubmit="return on_submit()">
+        <h2>New User Registration!</h2><br>
+        <div class="login_box">
+            <input type="text" name="username" id="1" placeholder="Username">
+            <input type="password" name="password" id="2" placeholder="password">
+            <input type="text" name="email" id="3" placeholder=Email><br>
+            <input type="date" name="birthDate" placeholder="Date of birth(yyyy-mm-dd)"><br>
+        </div>
+        <div class="login_box2">
+            <strong>Gender</strong> <input type="radio" name="gender" value="male">Male
+            <input type="radio" name="gender" value="female">Female<br>
+        </div>
+        <br><br><br>
+        <input type="submit" class="login_box1" value="Register">
+    </form>
+</div>
+<br/>
+<%@include file="footer.jsp" %>
 </body>
 </html>

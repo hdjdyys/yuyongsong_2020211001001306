@@ -11,10 +11,10 @@
     <title>Login</title>
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <h1>Login</h1>
 <%
-    if(!(request.getAttribute("message") == null)){
+    if (!(request.getAttribute("message") == null)) {
         out.println(request.getAttribute("message"));
     }
 %>
@@ -23,7 +23,7 @@
     String username = "";
     String password = "";
     String rememberMeVale = "";
-    if (allCookies != null){
+    if (allCookies != null) {
         for (Cookie c : allCookies) {
             if (c.getName().equals("cUsername")) {
                 username = c.getValue();
@@ -37,12 +37,12 @@
         }
     }
 %>
-<form method="post"  action = "${pageContext.request.contextPath}/login">
-    username<input type="text" name="username" /><br/>
-    password<input type="password" name="password" /><br/>
+<form method="post" action="${pageContext.request.contextPath}/login">
+    username<input type="text" name="username"/><br/>
+    password<input type="password" name="password"/><br/>
     <!--<input type="checkbox" name="rememberMe" value="1" <%=rememberMeVale.equals("1") ?"checked":""%>checked/> RememberMe <br/>-->
     <input type="submit" value="login"/>
 </form>
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 </body>
 </html>
