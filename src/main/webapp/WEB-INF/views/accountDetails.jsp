@@ -18,7 +18,7 @@
 							<li>Password :<span><%=u.getPassword()%></span></li>
 							<li>Email :<span><%=u.getEmail()%></span></li>
 							<li>Gender :<span><%=u.getGender()%></span></li>
-							<li>Birthdate :<span><%=u.getBirthDate()%></span></li>
+							<li>Birthdate :<span><%=u.getBirthdate()%></span></li>
 						</ul>
    						<a class="btn btn-default update" href="updateUser?id=<%=u.getId()%>">Update</a>
 					<%}%>
